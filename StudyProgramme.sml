@@ -31,3 +31,31 @@ struct
 
 	fun title (edu:study_programme) = (#title edu)
 end
+
+signature COURSE =
+sig
+	type study_programme = StudyProgramme.study_programme
+	type course
+	val all_courses	:	course list
+	val name	:	course -> string
+	val part_of	:	course -> study_programme
+end
+
+structure Course:> COURSE =
+struct
+	type study_programme = StudyProgramme.study_programme
+
+	type course = {
+		name	:	string,
+		part_of	:	study_programme
+	}
+
+	val all_courses = [
+		{ part_of = StudyProgramme.bswu, name = "Introduction to Programming"},
+		{ part_of = StudyProgramme.kdd, name = "Introduction to Digital Design"}
+	]
+
+	fun name(c:course) = (#name c)
+
+	fun part_of(c:course) = (#part_of c)
+end;
