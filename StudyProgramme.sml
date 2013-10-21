@@ -41,7 +41,7 @@ sig
 	val part_of	:	course -> study_programme
 end
 
-structure Course:> COURSE =
+structure Course: COURSE =
 struct
 	type study_programme = StudyProgramme.study_programme
 
@@ -58,4 +58,6 @@ struct
 	fun name(c:course) = (#name c)
 
 	fun part_of(c:course) = (#part_of c)
-end;
+end
+
+val msc = filter(fn c => StudyProgramme.ects (#part_of c) = 120) Course.all_courses;
