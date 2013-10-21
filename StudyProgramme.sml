@@ -10,7 +10,7 @@ sig
 	val title: study_programme -> string
 end
 
-structure StudyProgramme : STUDY_PROGRAMME = 
+structure StudyProgramme :> STUDY_PROGRAMME = 
 struct
 	type study_programme = {
 		title : string,
